@@ -8,7 +8,7 @@ import {
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Dashboard from "./components/Dashboard";
-import Upload from "./components/Upload"; // Step 4: Import the Upload component
+import Upload from "./components/Upload";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
 
         {/* Step 4: Add the Upload route here and protect it */}
         <Route
-          path="/Upload"
+          path="/upload"
           element={
             <ProtectedRoute>
               <Upload />
