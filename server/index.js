@@ -87,6 +87,24 @@ app.post('/api/auth/register', async (req, res) => {
     }
 });
 
+app.get('/api/objects/user/:userId', async (req, res) => {
+    try {
+        const { userId } = req.params;
+        
+        // Find all objects in MongoDB where the userId matches
+        const userObjects = await ObjectModel.find({ userId: userId });
+
+        if (!userObjects) {
+            return res.status(404).json({ message: "No objects found for this user" });
+        }
+
+        res.status(200).json(userObjects);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
 // 2. LOGIN
 app.post('/api/auth/login', async (req, res) => {
     try {
