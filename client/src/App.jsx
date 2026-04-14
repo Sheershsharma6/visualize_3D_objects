@@ -30,7 +30,7 @@ function App() {
 
         {/* Step 4: Add the Upload route here and protect it */}
         <Route
-          path="/upload"
+          path="/Upload"
           element={
             <ProtectedRoute>
               <Upload />
