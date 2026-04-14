@@ -5,11 +5,11 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
-import Dashboard from "./components/Dashboard";
-import Upload from "./components/upload"; // Step 4: Import the Upload component
-import ProtectedRoute from "./components/ProtectedRoute";
+import Login from "./components/Login.jsx";
+import Signup from "./components/Signup.jsx";
+import Dashboard from "./components/Dashboard.jsx";
+import Upload from "./components/Upload.jsx"; // Step 4: Import the Upload component
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 function App() {
   return (
