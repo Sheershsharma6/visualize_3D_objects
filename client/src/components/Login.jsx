@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import API from "../api";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -10,21 +10,21 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URL}/auth/login`,
-        {
-          email,
-          password,
-        },
-      );
+      const res = await API.post("/auth/login", {
+        email,
+        password,
+      });
 
       // Save data for the session
+      console.log("Login response:", res.data);
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("userId", res.data.user.id);
       localStorage.setItem("userEmail", res.data.user.email);
+      console.log("Token saved to localStorage, navigating to dashboard...");
 
       navigate("/dashboard");
     } catch (err) {
+      console.error("Login error:", err.response?.data || err.message);
       alert(err.response?.data?.message || "Login Failed");
     }
   };

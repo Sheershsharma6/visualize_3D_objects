@@ -10,17 +10,15 @@ const User = require('./models/User');
 
 const app = express();
 app.use(express.json());
-app.use(cors());
-app.use(cors({
-  origin: [
-    "http://localhost:5173", 
-    "https://visualize-3-d-objects-b7nb.vercel.app/" // Add your actual Vercel URL here
-  ],
-  credentials: true
-}));
 
+// CORS Configuration - Single, unified setup
 const corsOptions = {
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    origin: [
+        "http://localhost:5173",
+        "https://visualize-3-d-objects-b7nb.vercel.app", // No trailing slash
+        process.env.FRONTEND_URL
+    ].filter(Boolean), // Remove undefined values
+    credentials: true,
     optionsSuccessStatus: 200
 };
 

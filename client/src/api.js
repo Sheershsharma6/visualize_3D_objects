@@ -2,7 +2,8 @@ import axios from 'axios';
 
 // ✅ CORRECT: No quotes, using import.meta.env
 const API = axios.create({ 
-  baseURL: import.meta.env.VITE_API_BASE_URL 
+  baseURL: import.meta.env.VITE_API_BASE_URL,
+  withCredentials: true
 });
 // Automatically attach the JWT token to every request if it exists
 API.interceptors.request.use((req) => {
