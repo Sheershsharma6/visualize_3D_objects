@@ -35,9 +35,13 @@ const Upload = () => {
 
     setUploading(true);
     try {
-      await axios.post("http://localhost:5000/api/objects/upload", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      await axios.post(
+        `${import.meta.env.VITE_API_BASE_URL}/objects/upload`,
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        },
+      );
       alert("Upload Successful!");
       navigate("/dashboard");
     } catch (err) {
