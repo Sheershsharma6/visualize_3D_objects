@@ -11,19 +11,13 @@ const User = require('./models/User');
 const app = express();
 app.use(express.json());
 
-app.use(cors({
-  origin: process.env.FRONTEND_URL, 
-  credentials: true
-}));
-
 // CORS Configuration - Single, unified setup
-const cors = require('cors');
-
 const allowedOrigins = [
   'http://localhost:5173', 
   'https://visualize-3-d-objects-b7nb.vercel.app', 
-  'https://visualize-3-d-objects-b7nb-git-main-sheershs-projects-dc13afd6.vercel.app'
-];
+  'https://visualize-3-d-objects-b7nb-git-main-sheershs-projects-dc13afd6.vercel.app',
+  process.env.FRONTEND_URL
+].filter(Boolean);
 
 app.use(cors({
   origin: function (origin, callback) {
